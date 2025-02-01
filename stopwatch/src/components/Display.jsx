@@ -1,15 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Display = () => {
   const [minute, setMinute] = useState(0);
   const [started, setStarted] = useState(false);
   const [second, setSecond] = useState(0);
 
-  useState(() => {
+  useEffect(() => {
     let timer;
     if (started) {
-      console.log("Started inside if");
-      timer = setInterval(() => {
+      timer = setTimeout(() => {
         if (second < 59) {
           setSecond(second + 1);
         } else {
@@ -20,12 +19,12 @@ const Display = () => {
     }
     return () => clearTimeout(timer);
   }, [second, started]);
-  console.log(started);
   return (
     <>
       <h1>Stopwatch</h1>
       <div>
-        Time: {minute}:{second}
+        Time: {minute > 9 ? `${minute}` : `0${minute}`}:
+        {second > 9 ? `${second}` : `0${second}`}
       </div>
       {started ? (
         <button onClick={() => setStarted(false)}>Stop</button>
