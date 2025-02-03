@@ -8,7 +8,7 @@ const Display = () => {
   useEffect(() => {
     let timer;
     if (started) {
-      timer = setTimeout(() => {
+      timer = setInterval(() => {
         if (second < 59) {
           setSecond(second + 1);
         } else {
@@ -17,7 +17,7 @@ const Display = () => {
         }
       }, 1000);
     }
-    return () => clearTimeout(timer);
+    return () => clearInterval(timer);
   }, [second, started]);
   return (
     <>
