@@ -16,7 +16,7 @@ const Display = () => {
           setSecond(0);
         }
       }, 1000);
-    }
+    } else clearInterval(timer);
     return () => clearInterval(timer);
   }, [second, started]);
   return (
