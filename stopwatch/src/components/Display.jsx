@@ -23,7 +23,7 @@ const Display = () => {
     <>
       <h1>Stopwatch</h1>
       <div>
-        Time: {minute > 9 ? `${minute}` : `0${minute}`}:
+        Time: {minute > 9 ? `${minute}` : `${minute}`}:
         {second > 9 ? `${second}` : `0${second}`}
       </div>
       {started ? (
